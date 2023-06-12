@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Oracle Database Query Results</title>
+    <script>
+        async function fetchData() {
+            const response = await fetch('/query', {
+                method: 'POST'
+            });
+            const data = await response.json();
+            const resultArea = document.getElementById("result");
+            resultArea.innerHTML = ""; // Clear previous result
+
+            const table = document.getElementById("resultTable");
+            table.innerHTML = ""; // Clear previous table content
+
+            // Create table header
+            const headerRow = document.createElement("tr");
+            const header1 = document.createElement("th");
+            header1.textContent = "전압(V)";
+            const header2 = document.createElement("th");
+            header2.textContent = "전류(A)";
+            const header3 = document.createElement("th");
+            header3.textContent = "전력(W)";
+            headerRow.appendChild(header1);
+            headerRow.appendChild(header2);
+            headerRow.appendChild(header3);
+            table.appendChild(headerRow);
+
+            // Create table rows
+            data.forEach(rowData => {
+                const row = document.createElement("tr");
+                const cell1 = document.createElement("td");
+                cell1.textContent = rowData[0];
+                const cell2 = document.createElement("td");
+                cell2.textContent = rowData[1];
+                const cell3 = document.createElement("td");
+                cell3.textContent = rowData[2];
+                row.appendChild(cell1);
+                row.appendChild(cell2);
+                row.appendChild(cell3);
+                table.appendChild(row);
+            });
+        }
+    </script>
+</head>
+<body>
+    <h1>Oracle Database Query Results</h1>
+    <button type="button" onclick="fetchData()">Get Data</button>
+    <h2>Result:</h2>
+    <pre id="result"></pre>
+    <table border="1" id="resultTable">
+        <tr>
+            <th>전압(V)</th>
+            <th>전류(A)</th>
+            <th>전력(W)</th>
+        </tr>
+    </table>
+    <br>
+    <a href="/">Back to Home</a>
+</body>
+</html>

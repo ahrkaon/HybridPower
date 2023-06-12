@@ -1,0 +1,39 @@
+body {
+    margin: 0;
+    padding: 0;
+}
+.container {
+    display: flex;
+    flex-direction: row;
+    margin: 0;
+    padding-left: 0;
+}
+.content {
+    width: 80%; /* Adjust the width of the content container as needed */
+    margin-left: 30%; /* Add left margin equal to the width of the sidebar */
+}
+body, .card {
+    margin-bottom: 1rem;
+    background-color: #343a40;
+    color: white;
+}
+
+#sidebar {
+    width: 15%;
+    height: 100%;
+    position: fixed;
+    background-color: #222;
+    padding: 20px 0;
+}
+
+#sidebar a {
+    display: block;
+    padding: 10px;
+    color: white;
+    text-decoration: none;
+}
+
+#sidebar a:hover {
+    background-color: #333;
+    text-decoration: none;
+}
